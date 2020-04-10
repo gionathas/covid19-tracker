@@ -1,0 +1,41 @@
+.sidebar {
+  border-radius: 2%;
+  overflow: auto;
+  opacity: 0.9;
+  /* min-width: 10px; */
+  max-width: 260px;
+}
+
+.sidebar .sidebar-brand {
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.sidebar hr.sidebar-divider {
+  margin: 0 1rem 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.sidebar .nav-item {
+  width: 100%;
+  font-size: 0.9rem;
+  padding: 1rem 1rem;
+}
+
+.sidebar .nav-item:hover {
+  cursor: pointer;
+  color: rgb(156, 156, 156) !important;
+}
+
+.sidebar .nav-item a {
+  color: inherit;
+}
+
+.sidebar .subitems {
+  width: 90%;
+  background-color: rgb(39, 39, 39, 0.5);
+  border-radius: 2%;
+  max-height: 450px;
+  margin: 0 auto;
+  overflow-y: auto;
+}
