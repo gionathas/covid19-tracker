@@ -4,6 +4,7 @@
   opacity: 0.9;
   /* min-width: 10px; */
   max-width: 260px;
+  height: 100vh;
 }
 
 .sidebar .sidebar-brand {
@@ -35,7 +36,7 @@
   width: 90%;
   background-color: rgb(39, 39, 39, 0.5);
   border-radius: 2%;
-  max-height: 450px;
+  max-height: 400px;
   margin: 0 auto;
   overflow-y: auto;
 }

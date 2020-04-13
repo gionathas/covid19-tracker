@@ -5,22 +5,22 @@ import * as moment from "moment";
 import "./chart.css";
 import config from "../../../config";
 
-const ConfirmedChart = ({ slug }) => {
+const ConfirmedChart = ({ countryCode }) => {
   //api for fetching data
   const [
     { data: confirmed, loading: loadingConfirmed, error: errorConfirmed },
   ] = useAxios(
-    `${config.API_BASE_URL}/total/dayone/country/${slug}/status/confirmed`
+    `${config.API_BASE_URL}/total/dayone/country/${countryCode}/status/confirmed`
   );
   const [
     { data: recovered, loading: loadingRecovered, error: errorRecovered },
   ] = useAxios(
-    `${config.API_BASE_URL}/total/dayone/country/${slug}/status/recovered`
+    `${config.API_BASE_URL}/total/dayone/country/${countryCode}/status/recovered`
   );
   const [
     { data: deaths, loading: loadingDeaths, error: errorDeaths },
   ] = useAxios(
-    `${config.API_BASE_URL}/total/dayone/country/${slug}/status/deaths`
+    `${config.API_BASE_URL}/total/dayone/country/${countryCode}/status/deaths`
   );
 
   const isDataReady = confirmed && recovered && deaths;
@@ -69,6 +69,7 @@ const ConfirmedChart = ({ slug }) => {
     />
   ) : null;
 
+  console.log(errorConfirmed, errorDeaths, errorRecovered);
   return (
     <div className="container-fluid p-0 mt-4 text-center">
       {loadingConfirmed || loadingDeaths || loadingRecovered ? (

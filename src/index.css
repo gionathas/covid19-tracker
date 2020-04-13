@@ -27,8 +27,9 @@ body {
 
 .error-message {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 40%;
+  width: 100%;
+  text-align: center;
 }
 
 h1,

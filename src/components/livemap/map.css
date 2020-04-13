@@ -1,0 +1,5 @@
+.country-popup .mapboxgl-popup-content {
+  padding: 0;
+  opacity: 0.9;
+  background-color: #343a40;
+}

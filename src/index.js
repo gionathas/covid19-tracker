@@ -5,12 +5,13 @@ import App from "./components/App";
 import * as serviceWorker from "./serviceWorker";
 import "@forevolve/bootstrap-dark/dist/css/bootstrap-dark.min.css";
 import "font-awesome/css/font-awesome.min.css";
+import "mapbox-gl/dist/mapbox-gl.css";
 import { mockCovidApi } from "./data/mock/ApiMock";
 
 // enable mock if we are in dev mode
-// if (process.env.NODE_ENV && process.env.NODE_ENV === "development") {
-//   mockCovidApi();
-// }
+if (process.env.NODE_ENV && process.env.NODE_ENV === "development") {
+  mockCovidApi();
+}
 
 ReactDOM.render(
   <React.StrictMode>
