@@ -33,15 +33,16 @@ export const NodeSidebarItem = ({ text, icon, children, isOpen = false }) => {
   );
 };
 
-export const LeafSidebarItem = ({ link, text, icon }) => {
+export const LeafSidebarItem = ({ link, text, icon, onClick }) => {
   return (
     <Nav.Item as="li">
       <NavLink
         to={link}
         className="text-decoration-none"
         activeStyle={{
-          fontWeight: 800
+          fontWeight: 800,
         }}
+        onClick={onClick}
       >
         {icon}
         {text}

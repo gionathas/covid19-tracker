@@ -1,58 +1,59 @@
-import React from "react";
-import { LeafSidebarItem, NodeSidebarItem } from "./sidebar/SidebarItems";
-import SideBar from "./sidebar/Sidebar";
-import { faMap, faGlobeAfrica } from "@fortawesome/free-solid-svg-icons";
-import AllCountries, { MainCountries } from "../data/countries.js";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useRef } from "react";
+import React, { useState, useEffect } from "react";
+import Sidebar from "react-sidebar";
+import Content from "./sidebar/SidebarContent";
 
-const separateCountries = () => {
-  const mainCountries = [];
-  const otherCountries = [];
-
-  AllCountries.forEach((country) =>
-    (MainCountries.includes(country.ISO) ? mainCountries : otherCountries).push(
-      country
-    )
-  );
-  return { MAIN: mainCountries, OTHER: otherCountries };
+const mql = window.matchMedia(`(min-width: 800px)`);
+const toggleButtonStyle = {
+  position: "absolute",
+  top: "0",
+  left: "0",
+  zIndex: 1,
+  backgroundColor: "#343a40",
+  color: "white",
+  border: "none",
+  borderRadius: "10%",
+  opacity: 0.8,
+  padding: "5px 10px",
+  margin: "6px 4px",
 };
 
-const Sidebar = () => {
-  const countries = useRef(separateCountries());
+const ResponsiveSidebar = ({ children }) => {
+  const [open, setOpen] = useState(false);
+  const [docked, setDocked] = useState(mql.matches);
 
-  const CountryToSideBarItem = (country) => {
-    return (
-      <LeafSidebarItem
-        key={country.ISO}
-        text={country.name}
-        link={`/country/${country.ISO}`}
-      />
-    );
+  const onMediaQueryChange = () => {
+    setDocked(mql.matches);
+    setOpen(false);
   };
 
+  const toggleSidebarOpen = () => {
+    setOpen(!open);
+  };
+
+  useEffect(() => {
+    mql.addListener(onMediaQueryChange);
+    return () => {
+      mql.removeListener(onMediaQueryChange);
+    };
+  }, []);
+
+  const toggleSidebarButton = !docked && (
+    <button style={toggleButtonStyle} onClick={toggleSidebarOpen}>
+      <strong>Menu</strong>
+    </button>
+  );
+
   return (
-    <SideBar title="Covid-19 Tracker" className="bg-dark">
-      <LeafSidebarItem
-        text="Live Map"
-        link="/livemap"
-        icon={<FontAwesomeIcon icon={faMap} className="mr-2" />}
-      />
-      <NodeSidebarItem
-        text="Countries"
-        icon={<FontAwesomeIcon icon={faGlobeAfrica} className="mr-2" />}
-        isOpen={true}
-      >
-        <small className="text-muted">Main Countries</small>
-        {countries.current.MAIN.map((country) => CountryToSideBarItem(country))}
-        <hr />
-        <small className="text-muted">Other Countries</small>
-        {countries.current.OTHER.map((country) =>
-          CountryToSideBarItem(country)
-        )}
-      </NodeSidebarItem>
-    </SideBar>
+    <Sidebar
+      sidebar={<Content onLeafItemClick={() => setOpen(false)} />}
+      open={open}
+      docked={docked}
+      onSetOpen={setOpen}
+    >
+      {toggleSidebarButton}
+      {children}
+    </Sidebar>
   );
 };
 
-export default Sidebar;
+export default ResponsiveSidebar;

@@ -1,16 +1,11 @@
 import React from "react";
 import Sidebar from "./Sidebar";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router, Redirect } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
 import useAxios from "axios-hooks";
 import config from "../config";
 import { SummaryProvider } from "../context/SummaryContext";
-import Content from "./Content";
+import MainContent from "./MainContent";
 
 const renderSpinner = () => {
   return (
@@ -37,15 +32,9 @@ const App = () => {
     <SummaryProvider value={summary}>
       <Router>
         <div className="container-fluid p-0">
-          <div className="d-flex justify-content-between">
-            <Sidebar />
-            <Redirect
-              to={{
-                pathname: "/livemap",
-              }}
-            />
-            <Content />
-          </div>
+          <Sidebar>
+            <MainContent />
+          </Sidebar>
         </div>
       </Router>
     </SummaryProvider>

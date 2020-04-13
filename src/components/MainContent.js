@@ -1,8 +1,7 @@
-import React, { useContext } from "react";
+import React from "react";
 import LiveMap from "./livemap";
 import Country from "./country";
 import { Switch, Route } from "react-router-dom";
-import SummaryProvider from "../context/SummaryContext"
 
 const Content = () => {
   return (

@@ -89,16 +89,6 @@ const LiveMap = () => {
     }
   };
 
-  //show last update time in top left corner
-  const lastUpdate = countriesSummary && countriesSummary.length > 0 && (
-    <div className="px-3">
-      <small>
-        {" "}
-        Last update: {moment(countriesSummary[0].Date).format("LLLL")}
-      </small>
-    </div>
-  );
-
   const summaryCard = globalSummary && (
     <div className="d-inline-block global-summary bg-dark rounded border border-dark mt-2 p-2">
       <strong>Global Summary</strong>
@@ -125,7 +115,6 @@ const LiveMap = () => {
       onViewportChange={(vp) => setViewport(vp)}
       onClick={handleClick}
     >
-      {lastUpdate}
       {summaryCard}
       {geoJson && (
         <Source id="data" type="geojson" data={geoJson}>

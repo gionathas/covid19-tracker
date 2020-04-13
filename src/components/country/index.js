@@ -24,12 +24,6 @@ const Country = () => {
     );
   }
 
-  const lastUpdate = countrySummary.Date && (
-    <div className="text-sm-center text-md-left">
-      <small> Last update: {moment(countrySummary.Date).format("LLLL")}</small>
-    </div>
-  );
-
   const title = countrySummary.Country && (
     <div className="country-headers text-center py-2">
       <h3 className="text-capitalize">{countrySummary.Country}</h3>
@@ -45,7 +39,6 @@ const Country = () => {
 
   return (
     <div className="container">
-      {lastUpdate}
       {title}
       {boards}
     </div>
