@@ -5,12 +5,14 @@ import GeneralBoards from "./boards/GeneralBoards";
 import Chart from "./charts/Chart";
 import * as moment from "moment";
 
-
 const Country = () => {
   let { country } = useParams();
-  const summary = useContext(SummaryProvider);
 
-  const countrySummary = summary.find((item) => item.CountryCode === country);
+  const { Countries: countriesSummary } = useContext(SummaryProvider);
+
+  const countrySummary = countriesSummary.find(
+    (countrySummary) => countrySummary.CountryCode === country
+  );
   console.log(`Country Summary of ${country}`, countrySummary);
 
   //country not found

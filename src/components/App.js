@@ -34,7 +34,7 @@ const App = () => {
   if (loading) return renderSpinner();
   if (error) return renderError();
   return (
-    <SummaryProvider value={summary.Countries}>
+    <SummaryProvider value={summary}>
       <Router>
         <div className="container-fluid p-0">
           <div className="d-flex justify-content-between">

@@ -10,9 +10,9 @@ const calculateCircleRadiusOfCases = (cases) => {
   return Math.ceil(Math.pow(cases, 1 / 4)) + 1;
 };
 
-const generateGeoJsonFromSummaryData = (summary) => {
+const generateGeoJsonFromSummaryData = (countriesSummary) => {
   //generate geoJson Feature for each country
-  const features = summary.map((countrySummary) => {
+  const features = countriesSummary.map((countrySummary) => {
     const country = AllCountries.find(
       (item) => item.ISO === countrySummary.CountryCode
     );
@@ -40,7 +40,9 @@ const generateGeoJsonFromSummaryData = (summary) => {
 };
 
 const LiveMap = () => {
-  const summary = useContext(SummaryProvider);
+  const { Global: globalSummary, Countries: countriesSummary } = useContext(
+    SummaryProvider
+  );
   const [geoJson, setGeoJson] = useState({});
   const [visibleCountryPopup, setVisibleCountryPopup] = useState(null);
   const [viewport, setViewport] = useState({
@@ -53,31 +55,65 @@ const LiveMap = () => {
 
   //evrey time summary changes update geoJson data
   useEffect(() => {
-    setGeoJson(generateGeoJsonFromSummaryData(summary));
-  }, [summary]);
+    setGeoJson(generateGeoJsonFromSummaryData(countriesSummary));
+  }, [countriesSummary]);
+
+  useEffect(() => {
+    const resizeListener = (e) => {
+      setViewport({ ...viewport, width: "100%", height: "100%" });
+    };
+    window.addEventListener("resize", resizeListener);
+
+    return () => {
+      window.removeEventListener("resize", resizeListener);
+    };
+  });
 
   const handleClick = (e) => {
-    console.log(e);
-    const coordinates = e.features[0].geometry.coordinates.slice();
-    const properties = e.features[0].properties;
+    const features = e.features[0];
+    if (features) {
+      const coordinates = features.geometry.coordinates.slice();
+      const properties = features.properties;
 
-    //click on circle case
-    if (coordinates.length === 2 && properties) {
-      console.log(properties);
-      setVisibleCountryPopup(
-        <AreaPopup
-          coordinates={coordinates}
-          properties={properties}
-          handleClose={() => setVisibleCountryPopup(null)}
-        />
-      );
+      //click on circle case
+      if (coordinates.length === 2 && properties.Country) {
+        console.log(properties);
+        setVisibleCountryPopup(
+          <AreaPopup
+            coordinates={coordinates}
+            properties={properties}
+            handleClose={() => setVisibleCountryPopup(null)}
+          />
+        );
+      }
     }
   };
 
   //show last update time in top left corner
-  const lastUpdate = summary && summary.length > 0 && (
+  const lastUpdate = countriesSummary && countriesSummary.length > 0 && (
     <div className="px-3">
-      <small> Last update: {moment(summary[0].Date).format("LLLL")}</small>
+      <small>
+        {" "}
+        Last update: {moment(countriesSummary[0].Date).format("LLLL")}
+      </small>
+    </div>
+  );
+
+  const summaryCard = globalSummary && (
+    <div className="d-inline-block global-summary bg-dark rounded border border-dark mt-2 p-2">
+      <strong>Global Summary</strong>
+      <small className="d-block">
+        Total Confirmed:{" "}
+        <strong className="text-danger">{globalSummary.TotalConfirmed}</strong>
+      </small>
+      <small className="d-block">
+        Total Deaths:{" "}
+        <strong className="text-warning">{globalSummary.TotalDeaths}</strong>
+      </small>
+      <small className="d-block">
+        Total Recovered:{" "}
+        <strong className="text-warning">{globalSummary.TotalRecovered}</strong>
+      </small>
     </div>
   );
 
@@ -86,10 +122,11 @@ const LiveMap = () => {
       {...viewport}
       mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
       mapStyle="mapbox://styles/gionatha/ck8vnz7z4245o1irlljunxewf"
-      onViewportChange={setViewport}
+      onViewportChange={(vp) => setViewport(vp)}
       onClick={handleClick}
     >
       {lastUpdate}
+      {summaryCard}
       {geoJson && (
         <Source id="data" type="geojson" data={geoJson}>
           <Layer
