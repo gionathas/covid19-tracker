@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import SummaryProvider from "../../context/SummaryContext";
 import GeneralBoards from "./boards/GeneralBoards";
 import Chart from "./charts/Chart";
-import * as moment from "moment";
 
 const Country = () => {
   let { country } = useParams();

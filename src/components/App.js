@@ -1,11 +1,12 @@
 import React from "react";
 import Sidebar from "./Sidebar";
-import { BrowserRouter as Router, Redirect } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
 import useAxios from "axios-hooks";
 import config from "../config";
 import { SummaryProvider } from "../context/SummaryContext";
 import MainContent from "./MainContent";
+import { useEffect } from "react";
 
 const renderSpinner = () => {
   return (
@@ -31,11 +32,9 @@ const App = () => {
   return (
     <SummaryProvider value={summary}>
       <Router>
-        <div className="container-fluid p-0">
-          <Sidebar>
-            <MainContent />
-          </Sidebar>
-        </div>
+        <Sidebar>
+          <MainContent />
+        </Sidebar>
       </Router>
     </SummaryProvider>
   );

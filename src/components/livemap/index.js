@@ -3,8 +3,8 @@ import ReactMapGL, { Layer, Source } from "react-map-gl";
 import SummaryProvider from "../../context/SummaryContext";
 import { useEffect } from "react";
 import AllCountries from "../../data/countries";
-import * as moment from "moment";
 import AreaPopup from "./AreaPopup";
+import "./map.css";
 
 const calculateCircleRadiusOfCases = (cases) => {
   return Math.ceil(Math.pow(cases, 1 / 4)) + 1;
@@ -59,6 +59,17 @@ const LiveMap = () => {
   }, [countriesSummary]);
 
   useEffect(() => {
+    setViewport({
+      ...viewport,
+      width: "100%",
+      height: "100%",
+      // latitude: 0,
+      // longitude: 0,
+      // zoom: 1,
+    });
+  }, []);
+
+  useEffect(() => {
     const resizeListener = (e) => {
       setViewport({ ...viewport, width: "100%", height: "100%" });
     };
@@ -67,7 +78,7 @@ const LiveMap = () => {
     return () => {
       window.removeEventListener("resize", resizeListener);
     };
-  });
+  }, []);
 
   const handleClick = (e) => {
     const features = e.features[0];

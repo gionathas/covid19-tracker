@@ -10,7 +10,8 @@ body {
 }
 
 .content {
-  height: 100vh;
+  height: 100%;
+  width: 100%;
   overflow: auto;
 }
 
@@ -66,6 +67,15 @@ h6,
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+/** Class for remove initial transition effetcs (ex. Chrome bug) **/
+.preload-transitions * {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -ms-transition: none !important;
+  -o-transition: none !important;
+  transition: none !important;
 }
 
 /* CUSTOM SCROLLBAR */
