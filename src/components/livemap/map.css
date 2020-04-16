@@ -1,0 +1,14 @@
+.country-popup .mapboxgl-popup-content {
+  padding: 0;
+  opacity: 0.9;
+  background-color: #343a40;
+}
+
+.global-summary {
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0.8;
+  margin-right: 0.5rem;
+  z-index: 1;
+}
