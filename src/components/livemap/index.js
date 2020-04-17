@@ -59,19 +59,16 @@ const LiveMap = () => {
   }, [countriesSummary]);
 
   useEffect(() => {
-    setViewport({
-      ...viewport,
-      width: "100%",
-      height: "100%",
-      // latitude: 0,
-      // longitude: 0,
-      // zoom: 1,
+    setViewport((vp) => {
+      return { ...vp, width: "100%", height: "100%" };
     });
   }, []);
 
   useEffect(() => {
     const resizeListener = (e) => {
-      setViewport({ ...viewport, width: "100%", height: "100%" });
+      setViewport((vp) => {
+        return { ...vp, width: "100%", height: "100%" };
+      });
     };
     window.addEventListener("resize", resizeListener);
 

@@ -6,7 +6,6 @@ import useAxios from "axios-hooks";
 import config from "../config";
 import { SummaryProvider } from "../context/SummaryContext";
 import MainContent from "./MainContent";
-import { useEffect } from "react";
 
 const renderSpinner = () => {
   return (
