@@ -68,10 +68,6 @@ h6,
   font-size: 1rem !important;
 }
 
-small {
-  font-size: 80% !important;
-}
-
 /* CUSTOM SCROLLBAR */
 /* width */
 ::-webkit-scrollbar {

@@ -4,7 +4,10 @@
   opacity: 0.9;
   max-width: 220px;
   height: 100vh;
-  font-size: 0.8rem;
+}
+
+.sidebar .subtitle {
+  font-size: 70%;
 }
 
 .sidebar .sidebar-brand {
@@ -20,6 +23,7 @@
 .sidebar .nav-item {
   width: 100%;
   padding: 1rem 1rem;
+  font-size: 0.75rem;
 }
 
 .sidebar .nav-item:hover {

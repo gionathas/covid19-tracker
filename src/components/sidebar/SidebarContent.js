@@ -26,7 +26,7 @@ const SidebarContent = ({ onLeafItemClick }) => {
   const countries = useRef(separateCountries());
 
   const lastUpdate = summary && summary.length > 0 && (
-    <small>
+    <small className="subtitle">
       <i>Last Update: {moment(summary[0].Date).fromNow()}</i>
     </small>
   );
