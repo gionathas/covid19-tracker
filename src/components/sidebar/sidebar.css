@@ -2,9 +2,9 @@
   border-radius: 2%;
   overflow: auto;
   opacity: 0.9;
-  /* min-width: 10px; */
   max-width: 220px;
   height: 100vh;
+  font-size: 0.8rem;
 }
 
 .sidebar .sidebar-brand {
@@ -19,7 +19,6 @@
 
 .sidebar .nav-item {
   width: 100%;
-  font-size: 0.9rem;
   padding: 1rem 1rem;
 }
 
