@@ -31,6 +31,12 @@ const SidebarContent = ({ onLeafItemClick }) => {
     </small>
   );
 
+  const appVersion = process.env.REACT_APP_VERSION && (
+    <small className="app-version">
+      <i>v{process.env.REACT_APP_VERSION}</i>
+    </small>
+  );
+
   const CountryToSideBarItem = (country) => {
     return (
       <LeafSidebarItem
@@ -74,6 +80,7 @@ const SidebarContent = ({ onLeafItemClick }) => {
           )}
         </NodeSidebarItem>
       </Nav>
+      {appVersion}
     </div>
   );
 };

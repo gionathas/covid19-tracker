@@ -7,12 +7,18 @@ import "@forevolve/bootstrap-dark/dist/css/bootstrap-dark.min.css";
 import "font-awesome/css/font-awesome.min.css";
 import "mapbox-gl/dist/mapbox-gl.css";
 import config from "./config";
+import ReactGA from "react-ga";
 import { mockCovidApi } from "./data/mock/ApiMock";
 
 // enable mock if we are in dev mode
 if (config.mock_enabled) {
   console.log("Activating Mock...");
   mockCovidApi();
+}
+
+//enable analytics
+if (config.enableAnalytics) {
+  ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS_TRACKING_ID);
 }
 
 ReactDOM.render(
