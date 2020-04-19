@@ -4,7 +4,7 @@ const config = {
   development: {
     API_BASE_URL: "https://api.covid19api.com",
     mock_enabled: true,
-    enableAnalytics: true,
+    enableAnalytics: false,
   },
   production: {
     mock_enabled: false,

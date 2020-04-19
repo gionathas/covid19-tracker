@@ -85,7 +85,7 @@ const LiveMap = () => {
 
       //click on circle case
       if (coordinates.length === 2 && properties.Country) {
-        console.log(properties);
+        console.debug(properties);
         setVisibleCountryPopup(
           <AreaPopup
             coordinates={coordinates}

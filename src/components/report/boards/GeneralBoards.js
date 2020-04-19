@@ -6,14 +6,14 @@ const Boards = {
     title: "Confirmed",
     items: [
       {
-        navTitle: "Total",
-        subTitle: "Total Confirmed",
-        valueKey: "TotalConfirmed",
-      },
-      {
         navTitle: "Daily",
         subTitle: "New Confirmed",
         valueKey: "NewConfirmed",
+      },
+      {
+        navTitle: "Total",
+        subTitle: "Total Confirmed",
+        valueKey: "TotalConfirmed",
       },
     ],
   },
@@ -21,14 +21,14 @@ const Boards = {
     title: "Deaths",
     items: [
       {
-        navTitle: "Total",
-        subTitle: "Total Deaths",
-        valueKey: "TotalDeaths",
-      },
-      {
         navTitle: "Daily",
         subTitle: "New Deaths",
         valueKey: "NewDeaths",
+      },
+      {
+        navTitle: "Total",
+        subTitle: "Total Deaths",
+        valueKey: "TotalDeaths",
       },
     ],
   },
@@ -36,14 +36,14 @@ const Boards = {
     title: "Recovered",
     items: [
       {
-        navTitle: "Total",
-        subTitle: "Total Recovered",
-        valueKey: "TotalRecovered",
-      },
-      {
         navTitle: "Daily",
         subTitle: "New Recovered",
         valueKey: "NewRecovered",
+      },
+      {
+        navTitle: "Total",
+        subTitle: "Total Recovered",
+        valueKey: "TotalRecovered",
       },
     ],
   },
