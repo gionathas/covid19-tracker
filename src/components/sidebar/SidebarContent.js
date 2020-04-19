@@ -26,8 +26,14 @@ const SidebarContent = ({ onLeafItemClick }) => {
   const countries = useRef(separateCountries());
 
   const lastUpdate = summary && summary.length > 0 && (
-    <small>
+    <small className="subtitle">
       <i>Last Update: {moment(summary[0].Date).fromNow()}</i>
+    </small>
+  );
+
+  const appVersion = process.env.REACT_APP_VERSION && (
+    <small className="app-version">
+      <i>v{process.env.REACT_APP_VERSION}</i>
     </small>
   );
 
@@ -74,6 +80,7 @@ const SidebarContent = ({ onLeafItemClick }) => {
           )}
         </NodeSidebarItem>
       </Nav>
+      {appVersion}
     </div>
   );
 };

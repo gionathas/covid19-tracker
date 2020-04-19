@@ -1,10 +1,14 @@
 .sidebar {
+  position: relative;
   border-radius: 2%;
   overflow: auto;
-  opacity: 0.9;
-  /* min-width: 10px; */
-  max-width: 220px;
-  height: 100vh;
+  opacity: 0.95;
+  max-width: 240px;
+  height: 100%;
+}
+
+.sidebar .subtitle {
+  font-size: 75%;
 }
 
 .sidebar .sidebar-brand {
@@ -19,8 +23,8 @@
 
 .sidebar .nav-item {
   width: 100%;
-  font-size: 0.9rem;
   padding: 1rem 1rem;
+  font-size: 0.8rem;
 }
 
 .sidebar .nav-item:hover {
@@ -39,4 +43,10 @@
   max-height: 400px;
   margin: 0 auto;
   overflow-y: auto;
+}
+
+.sidebar .app-version {
+  position: absolute;
+  bottom: 0;
+  left: 5px;
 }
