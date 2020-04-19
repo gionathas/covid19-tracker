@@ -7,7 +7,7 @@ import "@forevolve/bootstrap-dark/dist/css/bootstrap-dark.min.css";
 import "font-awesome/css/font-awesome.min.css";
 import "mapbox-gl/dist/mapbox-gl.css";
 import config from "./config";
-import ReactGA from "react-ga";
+import { BrowserRouter as Router } from "react-router-dom";
 import { mockCovidApi } from "./data/mock/ApiMock";
 
 // enable mock if we are in dev mode
@@ -16,14 +16,11 @@ if (config.mock_enabled) {
   mockCovidApi();
 }
 
-//enable analytics
-if (config.enableAnalytics) {
-  ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS_TRACKING_ID);
-}
-
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <App />
+    </Router>
   </React.StrictMode>,
   document.getElementById("root")
 );

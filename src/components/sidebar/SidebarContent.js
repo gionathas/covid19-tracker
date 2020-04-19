@@ -43,7 +43,7 @@ const SidebarContent = ({ onLeafItemClick }) => {
         key={country.ISO}
         text={country.name}
         onClick={onLeafItemClick}
-        link={`/country/${country.ISO}`}
+        link={`/reports/${country.ISO}`}
       />
     );
   };
@@ -65,7 +65,7 @@ const SidebarContent = ({ onLeafItemClick }) => {
           onClick={onLeafItemClick}
         />
         <NodeSidebarItem
-          text="Countries"
+          text="Reports"
           icon={<FontAwesomeIcon icon={faGlobeAfrica} className="mr-2" />}
           isOpen={true}
         >
